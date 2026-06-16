@@ -8,6 +8,7 @@ import AnalyticsView from './components/AnalyticsView.jsx';
 import CropSelector from './components/CropSelector.jsx';
 import ActuatorForm from './components/ActuatorForm.jsx';
 import LogsChart from './components/LogsChart.jsx';
+import SettingsView from './components/SettingsView.jsx';
 
 const AppContent = () => {
   const { activeView, subView } = useCrop();
@@ -24,6 +25,7 @@ const AppContent = () => {
       {subView === 'crops' && <CropSelector />}
       {subView === 'controls' && <ActuatorForm />}
       {subView === 'logs' && <LogsChart />}
+      {subView === 'settings' && <SettingsView />}
     </div>
   );
 };

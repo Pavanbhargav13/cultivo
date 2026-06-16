@@ -14,14 +14,14 @@ import {
 import userAvatarImg from '../assets/user_avatar.png';
 
 const Sidebar = () => {
-  const { subView, setSubView, activeView, setActiveView } = useCrop();
+  const { subView, setSubView, activeView, setActiveView, operator, t } = useCrop();
 
   const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-    { id: 'crops', label: 'Crops Manager', icon: Sprout },
-    { id: 'controls', label: 'Actuator Controls', icon: Sliders },
-    { id: 'logs', label: 'System Logs', icon: Database },
+    { id: 'dashboard', label: t('dashboard'), icon: LayoutDashboard },
+    { id: 'analytics', label: t('analytics'), icon: BarChart3 },
+    { id: 'crops', label: t('crops_manager'), icon: Sprout },
+    { id: 'controls', label: t('actuator_controls'), icon: Sliders },
+    { id: 'logs', label: t('system_logs'), icon: Database },
   ];
 
   return (
@@ -30,7 +30,7 @@ const Sidebar = () => {
         {/* Brand Logo */}
         <div className="sidebar-logo" style={{ cursor: 'pointer' }} onClick={() => setActiveView('landing')}>
           <div className="sidebar-logo-icon">
-            <Sprout size={24} />
+            <Sprout size={30} />
           </div>
           <span>Cultivo</span>
         </div>
@@ -38,8 +38,8 @@ const Sidebar = () => {
         {/* Workspace Dropdown */}
         <div className="workspace-selector">
           <div className="workspace-info">
-            <span className="workspace-label">Team Workspace</span>
-            <span className="workspace-name">Main Greenhouse</span>
+            <span className="workspace-label">{t('team_workspace')}</span>
+            <span className="workspace-name">{t('main_greenhouse')}</span>
           </div>
           <ChevronDown size={16} className="workspace-chevron" style={{ color: 'var(--sb-text-muted)' }} />
         </div>
@@ -47,7 +47,7 @@ const Sidebar = () => {
         {/* Search */}
         <div className="sidebar-search">
           <Search size={14} className="search-icon" />
-          <input type="text" placeholder="Search sensors..." disabled />
+          <input type="text" placeholder={t('search_placeholder')} disabled />
           <span className="search-hotkey">⌘F</span>
         </div>
 
@@ -60,8 +60,8 @@ const Sidebar = () => {
               return (
                 <li key={item.id}>
                   <button
-                    className={`sidebar-item-btn ${isActive ? 'active' : ''}`}
-                    onClick={() => setSubView(item.id)}
+                     className={`sidebar-item-btn ${isActive ? 'active' : ''}`}
+                     onClick={() => setSubView(item.id)}
                   >
                     <div className="sidebar-item-link-left">
                       <Icon size={18} />
@@ -79,9 +79,13 @@ const Sidebar = () => {
 
       {/* Sidebar Footer */}
       <div className="sidebar-bottom">
-        <button className="settings-btn" onClick={() => alert('Settings module coming soon!')}>
+        <button 
+          className={`settings-btn ${subView === 'settings' ? 'active-settings' : ''}`} 
+          onClick={() => setSubView('settings')}
+          style={{ color: subView === 'settings' ? 'var(--sb-accent)' : 'inherit', fontWeight: subView === 'settings' ? '600' : 'normal' }}
+        >
           <Settings size={18} />
-          <span>Settings</span>
+          <span>{t('settings')}</span>
         </button>
 
         <div className="operator-profile">
@@ -89,8 +93,10 @@ const Sidebar = () => {
             <img src={userAvatarImg} alt="Operator Avatar" />
           </div>
           <div className="operator-details">
-            <span className="operator-name">Alex Williamson</span>
-            <span className="operator-role">Greenhouse Operator</span>
+            <span className="operator-name">{operator.name}</span>
+            <span className="operator-role">
+              {operator.role === 'Greenhouse Operator' ? t('greenhouse_operator') : operator.role}
+            </span>
           </div>
         </div>
       </div>

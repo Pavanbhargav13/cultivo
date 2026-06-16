@@ -1,29 +1,29 @@
 // frontend/src/components/LandingPage.jsx
 import React from 'react';
 import { useCrop } from '../context/CropContext.jsx';
-import { Sprout, ArrowRight, Activity, ShieldCheck, HeartPulse } from 'lucide-react';
+import { Sprout, ArrowRight } from 'lucide-react';
 import greenhouseMonitoringImg from '../assets/greenhouse_monitoring.png';
 import techIrrigationImg from '../assets/tech_irrigation.png';
 import organicFertilizerImg from '../assets/organic_fertilizer.png';
 import heroAgricultureImg from '../assets/hero_agriculture.png';
 
 const LandingPage = () => {
-  const { setActiveView } = useCrop();
+  const { setActiveView, t } = useCrop();
 
   const features = [
     {
-      title: 'Precision Irrigation',
-      desc: 'Smart moisture tracking triggers automated drip networks to match crop ranges exactly.',
+      title: t('feat_irrigation_title'),
+      desc: t('feat_irrigation_desc'),
       img: techIrrigationImg,
     },
     {
-      title: 'Climate Optimization',
-      desc: 'Ventilation, shading, and heating adapt dynamically to solar indexes and temperature trends.',
+      title: t('feat_climate_title'),
+      desc: t('feat_climate_desc'),
       img: heroAgricultureImg,
     },
     {
-      title: 'Optimal Nutrition',
-      desc: 'NPK and moisture levels are continuously analyzed to feed root zones with zero nutrient waste.',
+      title: t('feat_nutrition_title'),
+      desc: t('feat_nutrition_desc'),
       img: organicFertilizerImg,
     },
   ];
@@ -33,21 +33,21 @@ const LandingPage = () => {
       {/* Header */}
       <header className="landing-header">
         <a href="#home" className="logo-brand">
-          <span className="logo-icon"><Sprout size={22} /></span>
+          <span className="logo-icon"><Sprout size={32} /></span>
           <span>Cultivo</span>
         </a>
         <nav>
           <ul className="landing-nav">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about" onClick={() => alert('About Us module coming soon!')}>About Us</a></li>
-            <li><a href="#reviews" onClick={() => alert('Client reviews coming soon!')}>Reviews</a></li>
-            <li><a href="#products" onClick={() => alert('Product specs coming soon!')}>Products</a></li>
+            <li><a href="#home">{t('home')}</a></li>
+            <li><a href="#about">{t('about_us')}</a></li>
+            <li><a href="#reviews">{t('reviews')}</a></li>
+            <li><a href="#products" onClick={() => alert('Product specs coming soon!')}>{t('products')}</a></li>
           </ul>
         </nav>
         <div className="landing-actions">
-          <a href="#signin" className="btn-text" onClick={() => setActiveView('dashboard')}>Sign In</a>
+          <a href="#signin" className="btn-text" onClick={() => setActiveView('dashboard')}>{t('sign_in')}</a>
           <button className="btn-primary" onClick={() => setActiveView('dashboard')}>
-            Launch Dashboard <ArrowRight size={16} />
+            {t('launch_dashboard')} <ArrowRight size={16} />
           </button>
         </div>
       </header>
@@ -55,17 +55,17 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="landing-hero" id="home">
         <div className="hero-content">
-          <span className="badge-tag">Top-Notch Automation Platform</span>
-          <h1 className="hero-title">Bring Fresh Growth To Agriculture.</h1>
+          <span className="badge-tag">{t('hero_tag')}</span>
+          <h1 className="hero-title">{t('hero_title')}</h1>
           <p className="hero-subtitle">
-            Experience the ultimate cultivation journey with real-time telemetry tracking, machine learning forecasts, and precision micro-climates tailored to your crops.
+            {t('hero_subtitle')}
           </p>
           <div className="hero-cta">
             <button className="btn-primary btn-green" onClick={() => setActiveView('dashboard')}>
-              Get Started Now <ArrowRight size={16} />
+              {t('get_started_now')} <ArrowRight size={16} />
             </button>
             <button className="btn-primary" style={{ background: 'transparent', color: 'var(--text-dark)', border: '1px solid #e7e5e4' }} onClick={() => setActiveView('dashboard')}>
-              Explore Features
+              {t('explore_features')}
             </button>
           </div>
         </div>
@@ -79,19 +79,19 @@ const LandingPage = () => {
       <section className="landing-stats">
         <div className="stat-item">
           <span className="stat-number">50+</span>
-          <span className="stat-label">Years of Combined Agriculture Experience</span>
+          <span className="stat-label">{t('stat_exp')}</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">200+</span>
-          <span className="stat-label">Smart Greenhouse Installations</span>
+          <span className="stat-label">{t('stat_installs')}</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">120,000+</span>
-          <span className="stat-label">Managed Crop Profiles Worldwide</span>
+          <span className="stat-label">{t('stat_profiles')}</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">$15 Billion</span>
-          <span className="stat-label">Saved in Water & Fertilizer Waste</span>
+          <span className="stat-label">{t('stat_saved')}</span>
         </div>
       </section>
 
@@ -99,9 +99,9 @@ const LandingPage = () => {
       <section className="features-section" id="features">
         <div className="section-header">
           <div style={{ maxWidth: '550px' }}>
-            <h2 className="section-title">Next-Gen Solutions For Commercial Growing</h2>
+            <h2 className="section-title">{t('features_title')}</h2>
             <p className="db-text-muted" style={{ marginTop: '0.5rem', fontSize: '0.95rem' }}>
-              We provide cutting-edge automation tools to maximize crop yields, optimize resource consumption, and prevent anomalies before they happen.
+              {t('features_subtitle')}
             </p>
           </div>
         </div>
@@ -121,14 +121,106 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="about-section" id="about">
+        <div className="section-header">
+          <div>
+            <span className="badge-tag">{t('about_mission')}</span>
+            <h2 className="section-title">{t('about_title')}</h2>
+          </div>
+        </div>
+        <div className="about-grid">
+          <div className="about-card">
+            <h3 className="about-subtitle">{t('about_story_title')}</h3>
+            <p className="about-text">
+              {t('about_story_p1')}
+            </p>
+            <p className="about-text">
+              {t('about_story_p2')}
+            </p>
+          </div>
+          <div className="about-card highlight">
+            <h3 className="about-subtitle">{t('about_pillars_title')}</h3>
+            <ul className="about-list">
+              <li>
+                <strong>{t('pillar1_title')}</strong>
+                <span>{t('pillar1_desc')}</span>
+              </li>
+              <li>
+                <strong>{t('pillar2_title')}</strong>
+                <span>{t('pillar2_desc')}</span>
+              </li>
+              <li>
+                <strong>{t('pillar3_title')}</strong>
+                <span>{t('pillar3_desc')}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials / Client Reviews Section */}
+      <section className="testimonials-section" id="reviews">
+        <div className="testimonial-header">
+          <span className="testimonial-tag">{t('reviews_testimonial')}</span>
+          <h2 className="testimonial-title">{t('reviews_title')}</h2>
+        </div>
+        
+        <div className="testimonials-grid">
+          <div className="testimonial-card">
+            <div className="quote-icon">“</div>
+            <p className="testimonial-quote">
+              {t('review1_quote')}
+            </p>
+            <div className="testimonial-meta">
+              <span className="testimonial-author">Ramesh Gowda</span>
+              <span className="testimonial-location">Bengaluru, Karnataka, India</span>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="quote-icon">“</div>
+            <p className="testimonial-quote">
+              {t('review2_quote')}
+            </p>
+            <div className="testimonial-meta">
+              <span className="testimonial-author">Sunitha Patil</span>
+              <span className="testimonial-location">Hubli, Karnataka, India</span>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="quote-icon">“</div>
+            <p className="testimonial-quote">
+              {t('review3_quote')}
+            </p>
+            <div className="testimonial-meta">
+              <span className="testimonial-author">Rajesh Hegde</span>
+              <span className="testimonial-location">Shimoga, Karnataka, India</span>
+            </div>
+          </div>
+
+          <div className="testimonial-card">
+            <div className="quote-icon">“</div>
+            <p className="testimonial-quote">
+              {t('review4_quote')}
+            </p>
+            <div className="testimonial-meta">
+              <span className="testimonial-author">Devika Rao</span>
+              <span className="testimonial-location">Chikmagalur, Karnataka, India</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Collaborations Banner */}
       <section className="collab-banner">
-        <h2 className="collab-title">Collaborate And Learn From Industry Experts And Enthusiasts</h2>
+        <h2 className="collab-title">{t('collab_title')}</h2>
         <p className="collab-subtitle">
-          Join a global network of smart farmers sharing optimization thresholds and sustainable techniques.
+          {t('collab_subtitle')}
         </p>
         <button className="collab-cta" onClick={() => setActiveView('dashboard')}>
-          Connect With Community
+          {t('connect_community')}
         </button>
       </section>
 
@@ -136,7 +228,7 @@ const LandingPage = () => {
       <footer className="landing-footer">
         <div className="footer-top">
           <a href="#home" className="logo-brand">
-            <span className="logo-icon"><Sprout size={22} /></span>
+            <span className="logo-icon"><Sprout size={32} /></span>
             <span>Cultivo</span>
           </a>
           <ul className="footer-links">
