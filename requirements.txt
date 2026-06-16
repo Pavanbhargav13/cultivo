@@ -10,7 +10,10 @@ requests>=2.31.0
 
 # Frontend (Node) dependencies – install with npm or yarn
 react>=18.2.0
-react-dom>=18.2.0
+react-dom>=18.2.0git branch -M main
+git push -u origin main
+
+
 vite>=4.0.0
 recharts>=2.6.0
 lucide-react>=0.300.0

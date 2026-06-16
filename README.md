@@ -74,6 +74,6 @@ To hook up your cloud n8n alerting system, specify the endpoint inside the backe
 
 **`backend/.env`**:
 ```env
-N8N_WEBHOOK_URL=https://godszzzz.app.n8n.cloud/webhook/greenhouse-alert
+N8N_WEBHOOK_URL=https://your-n8n-instance.com/webhook/greenhouse-alert
 ```
 *No server restarts are required. The webhook dispatcher reloads the environment properties dynamically.*
