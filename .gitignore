@@ -1,4 +1,4 @@
-# Python
+# Python & Environments
 **/__pycache__/
 *.pyc
 *.pyo
@@ -8,10 +8,8 @@ env/
 venv/
 .env
 .venv
-pip-log.txt
-.cache
-.pytest_cache/
-.mypy_cache/
+**/.env
+**/.env.*
 
 # Databases & SQLite
 *.db
