@@ -1,0 +1,36 @@
+# Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv
+pip-log.txt
+.cache
+.pytest_cache/
+.mypy_cache/
+
+# Databases & SQLite
+*.db
+*.sqlite3
+
+# Node / JS
+node_modules/
+dist/
+dist-ssr/
+.eslintcache
+
+# IDEs & OS
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+cultivo/

@@ -1,0 +1,21 @@
+# Unified requirements file for the entire project (Python + Node)
+
+# Python backend dependencies
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+sqlalchemy>=2.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+requests>=2.31.0
+
+# Frontend (Node) dependencies – install with npm or yarn
+react>=18.2.0
+react-dom>=18.2.0
+vite>=4.0.0
+recharts>=2.6.0
+lucide-react>=0.300.0
+
+# ML dependencies for forecasting
+pandas>=2.2.0
+scikit-learn>=1.5.0
+joblib>=1.4.0
